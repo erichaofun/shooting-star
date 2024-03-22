@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooting Star</title>
+    <link rel="icon" type="image/png" href="./Basketball.png">
+</head>
+<body>
+
+<div class="count">
+<img id="bball" src="./bball.svg" width=100px, height="100px">
+<h1>命中率小幫手</h1>
+<p class="show">
+命中數：<span id="count">0</span>
+</p>
+<p class="show"> 
+投籃數 : <span id="count2">0</span>
+</p>
+<p class="show">
+趴數：<span id="percentage">0%</span>
+</p>
+<p>
+<button class="bucket"id="increment">命中</button>
+<button class="miss"id="decrement">沒命中</button>
+<br>
+<br>
+<button onclick="reset()" class="reset"> 重新計算</button>
+
+</p>
+</div>
+
+<style>
+
+.count{
+position: absolute;
+border: solid 10px #FF3EA5;
+left : 50%;
+top: 50%;
+transform: translateX(-50%) translateY(-50%);
+padding: 50px;
+text-align: center;
+background-color:black;
+width: auto;
+}
+
+.bucket{
+background-color: rgb(0, 117, 0);
+color: aliceblue;
+font-size: 20px;
+border-radius: 10px;
+width: 150px;
+
+}
+
+.miss{
+background-color: rgb(223, 0, 0);
+color: aliceblue;
+font-size: 20px;
+border-radius: 10px;
+width: 150px;
+
+}
+
+.reset{
+background-color: rgb(255, 211, 50);
+font-size: 20px;
+border-radius: 10px;
+width: 150px;
+cursor: pointer;
+.reset
+}
+
+body{
+width: 100%;
+height: 100%;
+background-image: linear-gradient(to bottom right, rgb(0, 174, 255), rgb(249, 249, 2),rgb(195, 75, 255));
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+
+}
+
+img{
+  border: 8px solid #EEEEEE;
+  border-radius: 50%;
+}
+
+
+h1, p {
+
+color: aliceblue;
+
+}
+
+
+div{
+width: auto;
+height: auto;
+border-radius: 20px;
+}
+
+
+.show{
+  
+  font-size: 20px;
+}
+
+/*Below refer to web t.ly/M3KWX*/
+.bucket:hover {
+    box-shadow: 0px 15px 25px -5px green;
+    transform: scale(1.03);
+    cursor: pointer;
+    
+}
+.bucket:active {
+    box-shadow: 0px 4px 8px yellow;
+    transform: scale(0.98);
+}
+
+.miss:hover {
+    box-shadow: 0px 15px 25px -5px red;
+    transform: scale(1.03);
+    cursor: pointer;
+}
+.miss:active {
+    box-shadow: 0px 4px 8px pink;
+    transform: scale(0.98);
+}
+
+@media (min-width:480px){
+
+  .body  {
+    width: 60%;
+  }
+  
+}
+
+@media (max-width: 480px ){
+
+  h1{
+    font-size: 20px;
+    font-weight: bold;
+   }
+
+   p{
+    font-size: 0.3rem;
+   }
+}
+
+
+</style>
+
+
+<script>
+
+// 建立一個變數來儲存目前的計數
+var count = 0;
+var count2 = 0;
+
+
+// 建立一個函數來增加計數 命中率
+function increment() {
+  // 將計數加 1
+  count++;
+  count2++;
+
+  // 重新計算趴數
+  var percentage = count / count2 *100;
+
+  // 顯示計數和趴數
+  document.getElementById("count").innerHTML = count;
+  document.getElementById("count2").innerHTML = count2;
+  document.getElementById("percentage").innerHTML = percentage.toPrecision(3)+" %";
+}
+
+// 建立一個函數來增加計數 投籃數
+function decrement() {
+  // 將計數減 1
+  count2++;
+
+  // 重新計算趴數
+  var percentage = count / count2 *100;
+
+  // 顯示計數和趴數
+  document.getElementById("count").innerHTML = count;
+  document.getElementById("count2").innerHTML = count2;
+  document.getElementById("percentage").innerHTML = percentage.toPrecision(3)+" %";
+}
+
+// 繫結事件處理常式
+document.getElementById("increment").addEventListener("click", increment);
+document.getElementById("decrement").addEventListener("click", decrement);
+
+
+//document.getElementById("divide").addEventListener("click", divide);
+
+        function reset(){
+            document.getElementById("count").innerHTML= count=0;
+            document.getElementById("count2").innerHTML= count2=0;
+            document.getElementById("percentage").innerHTML= percentage=0+" %";
+            
+        }
+
+
+
+</script>
+
+</body>
+</html>
